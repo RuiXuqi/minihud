@@ -1,13 +1,27 @@
 package minihud;
 
-import net.ornithemc.osl.entrypoints.api.client.ClientModInitializer;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import malilib.registry.Registry;
 import minihud.config.Configs;
 
-public class MiniHud implements ClientModInitializer
+@Mod(
+        modid = Reference.MOD_ID,
+        name = Reference.MOD_NAME,
+        version = Reference.MOD_VERSION,
+        dependencies = "required-after:malilib;required-after:mixinbooter@[8.0,)",
+        guiFactory = "minihud.config.factory.MiniHudGuiFactory",
+        clientSideOnly = true,
+        acceptableRemoteVersions = "*",
+        customProperties = {
+                @Mod.CustomProperty(k = "license", v = "LGPLv3"),
+                @Mod.CustomProperty(k = "issueTrackerUrl", v = "https://github.com/RuiXuqi/minihud/issues")
+        }
+)
+public class MiniHud
 {
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
@@ -19,8 +33,8 @@ public class MiniHud implements ClientModInitializer
         }
     }
 
-    @Override
-    public void initClient()
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event)
     {
         Registry.INITIALIZATION_DISPATCHER.registerInitializationHandler(new InitHandler());
     }

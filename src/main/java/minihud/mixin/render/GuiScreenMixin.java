@@ -18,7 +18,7 @@ import minihud.util.MiscUtils;
 @Mixin(GuiScreen.class)
 public abstract class GuiScreenMixin extends Gui
 {
-    @Shadow protected Minecraft mc;
+    @Shadow public Minecraft mc;
 
     @Inject(method = "getItemToolTip", at = @At("RETURN"))
     private void onGetItemTooltip(ItemStack stack, CallbackInfoReturnable<List<String>> cir)
