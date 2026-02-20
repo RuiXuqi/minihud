@@ -1,22 +1,14 @@
 package minihud.core;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import zone.rong.mixinbooter.IEarlyMixinLoader;
 
 import javax.annotation.Nullable;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 @IFMLLoadingPlugin.Name("EarlyMixin")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
-public class MiniHudCore implements IFMLLoadingPlugin, IEarlyMixinLoader
+public class MiniHudCore implements IFMLLoadingPlugin
 {
-    @Override
-    public List<String> getMixinConfigs()
-    {
-        return Collections.singletonList("mixins.minihud.json");
-    }
 
     @Nullable
     @Override
@@ -42,7 +34,6 @@ public class MiniHudCore implements IFMLLoadingPlugin, IEarlyMixinLoader
     @Override
     public void injectData(Map<String, Object> data)
     {
-
     }
 
     @Nullable
